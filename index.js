@@ -1,4 +1,6 @@
 const five = require('johnny-five')
+const notifier = require('node-notifier')
+
 const argv = require('optimist')
   .usage('Usage: $0 --baseTemp [num] --maxIncrease [num] --serialPort <PORT>')
   .demand(['baseTemp', 'maxIncrease'])
@@ -17,6 +19,7 @@ const ledPins = [3, 4, 5]
 const alarmLedPin = 6
 const ledCount = ledPins.length
 const ledMaxBrightness = 255
+let isAlarmOn = false
 
 board.on('ready', function () {
   // This requires OneWire support using the ConfigurableFirmata
@@ -44,9 +47,16 @@ board.on('ready', function () {
     }
 
     if (tempPercent >= 1) {
+      !isAlarmOn && notifier.notify({
+        title: 'The Temperature Alarm',
+        message: `Temperature is ${this.celsius.toFixed(2)} / Max is ${maxTemperature.toFixed(2)} °C`
+      })
       alarmLed.on()
+
+      isAlarmOn = true
     } else {
       alarmLed.off()
+      isAlarmOn = false
     }
   })
 })
