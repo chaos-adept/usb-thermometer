@@ -5,10 +5,10 @@ Temperature Alarmer
 It is a basic temperature Alarmer based on the [DS18B20](https://www.aliexpress.com/premium/DS18B20.html?d=y&blanktest=0&origin=y&SearchText=DS18B20&tc=ppc&initiative_id=SB_20181013225623&isViewCP=y&catId=0) sensor and [johnny-five](http://johnny-five.io).
 # Pins 
 * 6 - Alarm Pin
-* 2-5 - Indication of progress reaching the max from the base temperature. Each pin(1-3) gets brightness/pwd signal in one of three ranges
-    * 1 led - 0-33%
-    * 2 led - 33%-66%
-    * 3 led- 66%-100%.
+* 3-5 - Indication of progress reaching the max from the base temperature. Each pin(1-3) gets brightness/pwd signal in one of three ranges
+    * 3 led - 0-33%
+    * 4 led - 33%-66%
+    * 5 led- 66%-100%.
 * 2 - Input data from the sensor
 
 *Important*: You need to have _4.7 kOm_ resister. 
