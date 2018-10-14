@@ -46,15 +46,20 @@ board.on('ready', function () {
       (tempPercent > ledPercentFrom) ? (led.on() && led.brightness(brightness)) : led.off()
     }
 
-    if (tempPercent >= 1) {
-      !isAlarmOn && notifier.notify({
-        title: 'The Temperature Alarm',
-        message: `Temperature is ${this.celsius.toFixed(2)} / Max is ${maxTemperature.toFixed(2)} °C`
+    if ((tempPercent >= 1) && (!isAlarmOn)) {
+      notifier.notify({
+        title: 'Alarm',
+        message: `ALARM! Temperature is ${this.celsius.toFixed(2)} / Max is ${maxTemperature.toFixed(2)} °C`
       })
       alarmLed.on()
-
       isAlarmOn = true
-    } else {
+    }
+
+    if (isAlarmOn && (tempPercent < 1)) {
+      notifier.notify({
+        title: 'Info',
+        message: `Temperature is normal now. It is ${this.celsius.toFixed(2)} / Max is ${maxTemperature.toFixed(2)} °C`
+      })
       alarmLed.off()
       isAlarmOn = false
     }
