@@ -1,0 +1,20 @@
+{
+  "name": "usb-thermometer",
+  "version": "1.0.0",
+  "description": "it is basic johnny-five based usb termometer",
+  "main": "index.js",
+  "scripts": {
+    "checkstyle": "standard",
+    "test": "npm run checkstyle && echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "denis.rykovanov@mail.ru",
+  "license": "Apache License Version 2.0",
+  "dependencies": {
+    "johnny-five": "^1.0.0",
+    "optimist": "^0.6.1"
+  },
+  "engines": {
+    "node": ">=8.11.2"
+  }
+}
