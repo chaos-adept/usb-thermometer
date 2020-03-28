@@ -11,7 +11,7 @@
 int led_pins[] = {PIN_LED_1, PIN_LED_2, PIN_LED_3, PIN_LED_ALARM};
 int PIN_LED_COUNT = 4;
 
-float baseTemperature = 15;
+float baseTemperature = 17;
 float maxTemperature = 24;
  
 
